@@ -116,8 +116,8 @@ from colorama import Fore, Style, init
 print(Style.BRIGHT + Fore.CYAN + "\nTreasure Hunt" + Style.RESET_ALL)
 
 # Peta
-size= int(input(f"Masukkan ukuran peta: ")) # Modifikasi A, untuk input ukuran peta
-treasure_map = ["-" for _ in range(size)] # Membuat peta dengan ukuran 10x10 dan menyembunyikan treasure
+size = int(input(f"Masukkan ukuran peta: "))
+treasure_map = ["-" for _ in range(size)]
 
 import random
 print(Style.BRIGHT + Fore.GREEN + f"Selamat datang di Treasure Hunt! Peta memiliki {size} lokasi (0 hingga {size-1}).")
@@ -125,23 +125,23 @@ treasure_index = random.randint(0, size-1)
 
 while treasure_index < 0 or treasure_index >= size:
     print(Fore.RED + "Posisi treasure tidak valid!" + Style.RESET_ALL)
-    treasure_index= int(input(f"Masukkan posisi treasure (0-{size-1}): ")) # Meminta input posisi treasure
+    treasure_index = int(input(f"Masukkan posisi treasure (0-{size-1}): "))
 
-treasure_map[treasure_index]= "X" # Menyimpan treasure pada peta
+treasure_map[treasure_index] = "X"
 
 # Memulai permainan
-def play_treasue_hunt():
+def play_treasure_hunt():
     print(Style.BRIGHT + Fore.GREEN + "\nHarta karun telah disembunyikan di peta! Mulai permainan!" + Style.RESET_ALL)
-    print(Style.BRIGHT + "Silahkan tebak posisi treasure (0-9)." + Style.RESET_ALL)
+    print(Style.BRIGHT + "Silahkan tebak posisi treasure (0-" + str(size-1) + ")." + Style.RESET_ALL)
 
     # Loop permainan
     while True:
         # Menampilkan peta saat ini
-        print("\nPeta saat ini:", ["_" for _ in range(size)]) # Peta tersembunyi
+        print("\nPeta saat ini:", ["_" for _ in range(size)])
 
         # Meminta tebakan
         try:
-            guess= int(input(Style.BRIGHT + f"Masukkan tebakanmu (0-{size-1}): "))
+            guess = int(input(Style.BRIGHT + f"Masukkan tebakanmu (0-{size-1}): "))
         except ValueError:
             print(Fore.RED + "Tebakan tidak valid!" + Style.RESET_ALL)
             continue
@@ -152,13 +152,13 @@ def play_treasue_hunt():
             continue
 
         # Validasi tebakan benar/salah
-        if treasure_map[guess]== "X":
+        if treasure_map[guess] == "X":
             print(Fore.GREEN + "Selamat! Kamu menemukan harta karun!" + Style.RESET_ALL)
             break
         else:
             print(Fore.RED + "Tebakanmu salah! Coba lagi." + Style.RESET_ALL)
-    
+
     print(Style.BRIGHT + Fore.CYAN + "Permainan selesai!" + Style.RESET_ALL)
 
 # Memulai permainan
-play_treasue_hunt()
+play_treasure_hunt()
