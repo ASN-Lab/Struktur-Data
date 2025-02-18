@@ -116,12 +116,12 @@ from colorama import Fore, Style, init
 print(Style.BRIGHT + Fore.CYAN + "\nTreasure Hunt" + Style.RESET_ALL)
 
 # Peta
-size= int(input(f"Masukkan ukuran peta: "))
+size= int(input(f"Masukkan ukuran peta: ")) # Modifikasi A, untuk input ukuran peta
 treasure_map = ["-" for _ in range(size)] # Membuat peta dengan ukuran 10x10 dan menyembunyikan treasure
 
-# Menentukan posisi treasure secara manual
+import random
 print(Style.BRIGHT + Fore.GREEN + f"Selamat datang di Treasure Hunt! Peta memiliki {size} lokasi (0 hingga {size-1}).")
-treasure_index= int(input(f"Masukkan posisi treasure (0-{size-1}): "))
+treasure_index = random.randint(0, size-1)
 
 while treasure_index < 0 or treasure_index >= size:
     print(Fore.RED + "Posisi treasure tidak valid!" + Style.RESET_ALL)
