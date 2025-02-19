@@ -129,14 +129,6 @@ import random
 print(Style.BRIGHT + Fore.GREEN + f"Selamat datang di Treasure Hunt! Peta memiliki {size} lokasi (0 hingga {size-1}).")
 treasure_index = random.randint(0, size-1)
 
-while treasure_index < 0 or treasure_index >= size:
-    print(Fore.RED + "Posisi treasure tidak valid!" + Style.RESET_ALL)
-    try:
-        treasure_index = int(input(f"Masukkan posisi treasure (0-{size-1}): "))
-    except ValueError:
-        print(Fore.RED + "Posisi treasure harus berupa angka!" + Style.RESET_ALL)
-        treasure_index = None
-
 treasure_map[treasure_index] = "X"
 
 # Memulai permainan
