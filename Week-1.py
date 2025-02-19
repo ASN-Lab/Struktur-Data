@@ -115,8 +115,14 @@ from colorama import Fore, Style, init
 
 print(Style.BRIGHT + Fore.CYAN + "\nTreasure Hunt" + Style.RESET_ALL)
 
-# Peta
-size = int(input(f"Masukkan ukuran peta: "))
+size = None
+while size is None:
+    try:
+        size = int(input(f"Masukkan ukuran peta: "))
+    except ValueError:
+        print(Fore.RED + "Ukuran peta harus berupa angka!" + Style.RESET_ALL)
+        continue
+
 treasure_map = ["-" for _ in range(size)]
 
 import random
@@ -125,7 +131,11 @@ treasure_index = random.randint(0, size-1)
 
 while treasure_index < 0 or treasure_index >= size:
     print(Fore.RED + "Posisi treasure tidak valid!" + Style.RESET_ALL)
-    treasure_index = int(input(f"Masukkan posisi treasure (0-{size-1}): "))
+    try:
+        treasure_index = int(input(f"Masukkan posisi treasure (0-{size-1}): "))
+    except ValueError:
+        print(Fore.RED + "Posisi treasure harus berupa angka!" + Style.RESET_ALL)
+        treasure_index = None
 
 treasure_map[treasure_index] = "X"
 
